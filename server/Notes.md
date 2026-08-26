@@ -17,3 +17,4 @@ controller - contains muiltiple files which helps us to manage multiple logic of
 middleswares folder - contains multer , cloudinary etc middlewares
 utils - comman logic for controller function like generating a token for user
 config - config file for mongoDB
+sentry - application monitoring software that helps us to find and fix the error and also helps us to optimize our application
