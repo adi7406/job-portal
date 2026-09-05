@@ -8,6 +8,8 @@ import { clerkWebhooks } from './controller/webhooks.js';
 import companyRoutes from "./routes/companyRoutes.js"
 import connectCloudinary from './config/cloudinary.js';
 import jobRoutes from './routes/jobRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import {clerkMiddleware} from '@clerk/express';
 
 //initialize express
 const app = express()
@@ -15,6 +17,7 @@ const app = express()
 //middleware
 app.use(cors()) // for resorce sharing from different origin
 app.use(express.json()) // body parser
+app.use(clerkMiddleware())
 
 //routes
 app.get('/',(req,res)=> res.send('API working'))
@@ -27,6 +30,7 @@ app.post('/webhooks',clerkWebhooks)
 
 app.use('/api/company',companyRoutes)
 app.use('/api/jobs',jobRoutes)
+app.use('/api/user',userRoutes)
 
 // connect ot database
 await connectDB()
